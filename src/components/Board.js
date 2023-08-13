@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import Square from "./Square";
 
 
-function Board(props) {
-
-    const [xIsNext, setXIsNext] = useState(true);
-    const [squares, setSquares] = useState(Array(9).fill(null));
+function Board({xIsNext,squares,onPlay}) {
 
     function handleClick(i) {
         const nextSquares = squares.slice();
@@ -20,8 +17,7 @@ function Board(props) {
                 nextSquares[i] = 'O';
             }
 
-            setSquares(nextSquares);
-            setXIsNext(!xIsNext);
+            onPlay(nextSquares);
         }
         
     }
